@@ -39,8 +39,8 @@ function ChartOverview({ chart }: { chart: Chart }) {
   const [chartStyle, setChartStyle] = useState<'north' | 'south'>('north');
 
   const ascendant = chart.astro_details?.ascendant ?? '—';
-  const moonSign = chart.planets?.Moon?.sign ?? '—';
-  const sunSign = chart.planets?.Sun?.sign ?? '—';
+  const moonSign = chart.planets?.moon?.sign ?? '—';
+  const sunSign = chart.planets?.sun?.sign ?? '—';
 
   const majorDasha = chart.current_dasha?.major;
   const minorDasha = chart.current_dasha?.minor;
