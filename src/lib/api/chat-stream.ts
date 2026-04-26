@@ -24,6 +24,7 @@ if (!BASE_URL) throw new Error('NEXT_PUBLIC_BACKEND_URL is not set');
 export async function* streamChat(
   chartId: ChartId,
   message: string,
+  signal?: AbortSignal,
 ): AsyncGenerator<string> {
   const supabase = createClient();
   const {
@@ -39,6 +40,7 @@ export async function* streamChat(
         : {}),
     },
     body: JSON.stringify({ message }),
+    signal,
   });
 
   if (!res.ok) {
@@ -57,6 +59,7 @@ export async function* streamChat(
   let buffer = '';
 
   while (true) {
+    if (signal?.aborted) break;
     const { done, value } = await reader.read();
     if (done) return;
 

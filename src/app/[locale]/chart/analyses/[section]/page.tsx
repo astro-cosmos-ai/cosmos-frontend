@@ -40,20 +40,21 @@ export default function AnalysisSectionPage({ params }: Props) {
     setHydrated(true);
   }, []);
 
-  // Validate section before rendering any hooks that depend on it
+  // Call all hooks unconditionally before any conditional returns
+  const {
+    data: analysis,
+    isLoading,
+    isError,
+  } = useAnalysis(chartId ?? undefined, sectionParam as Section);
+
+  const runMutation = useRunAnalysis(chartId ?? '');
+
+  // Validate section after all hooks have been called
   if (!isValidSection(sectionParam)) {
     notFound();
   }
 
   const section = sectionParam as Section;
-
-  const {
-    data: analysis,
-    isLoading,
-    isError,
-  } = useAnalysis(chartId ?? undefined, section);
-
-  const runMutation = useRunAnalysis(chartId ?? '');
   const isRunning = runMutation.isPending;
 
   function handleRun() {

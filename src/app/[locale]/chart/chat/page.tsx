@@ -21,6 +21,14 @@ export default function ChatPage() {
 
   const bottomRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const abortRef = useRef<AbortController | null>(null);
+
+  // Cancel any in-flight stream on unmount
+  useEffect(() => {
+    return () => {
+      abortRef.current?.abort();
+    };
+  }, []);
 
   useEffect(() => {
     setChartId(getStoredChartId());
@@ -61,6 +69,11 @@ export default function ChatPage() {
     setInput('');
     setStreamError(null);
 
+    // Cancel any previous in-flight stream, then arm a fresh controller
+    abortRef.current?.abort();
+    const controller = new AbortController();
+    abortRef.current = controller;
+
     // Reset textarea height
     if (textareaRef.current) {
       textareaRef.current.style.height = 'auto';
@@ -84,7 +97,7 @@ export default function ChatPage() {
     setStreaming(true);
 
     try {
-      for await (const chunk of streamChat(chartId, text)) {
+      for await (const chunk of streamChat(chartId, text, controller.signal)) {
         setMessages((prev) => {
           const updated = [...prev];
           const last = updated[updated.length - 1];
@@ -261,6 +274,7 @@ export default function ChatPage() {
                 placeholder={t('inputPlaceholder')}
                 disabled={streaming || !chartId}
                 rows={1}
+                className="focus:ring-2 focus:ring-[var(--accent)] focus:outline-none"
                 style={{
                   flex: 1,
                   resize: 'none',
@@ -271,7 +285,6 @@ export default function ChatPage() {
                   padding: '10px 14px',
                   fontSize: 14,
                   lineHeight: 1.5,
-                  outline: 'none',
                   overflow: 'hidden',
                   opacity: streaming || !chartId ? 0.6 : 1,
                 }}
