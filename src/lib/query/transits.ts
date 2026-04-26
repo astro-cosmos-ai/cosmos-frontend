@@ -12,12 +12,13 @@ const STALE_10MIN = 10 * 60 * 1000;
 /**
  * Fetches today's transit snapshot for a chart.
  * staleTime: 10 min — daily snapshot; safe to cache within a session.
+ * Pass `enabled: false` to defer until a prerequisite (e.g. /load) completes.
  */
-export function useTransits(chartId: ChartId | undefined) {
+export function useTransits(chartId: ChartId | undefined, enabled = true) {
   return useQuery<TransitResult, Error>({
     queryKey: ['transits', chartId],
     queryFn: () => fetchTransits(chartId!),
-    enabled: !!chartId,
+    enabled: !!chartId && enabled,
     staleTime: STALE_10MIN,
   });
 }
@@ -25,12 +26,13 @@ export function useTransits(chartId: ChartId | undefined) {
 /**
  * Fetches the Jupiter + Saturn double-transit influence map.
  * staleTime: 10 min — same reasoning as useTransits.
+ * Pass `enabled: false` to defer until a prerequisite (e.g. /load) completes.
  */
-export function useDoubleTransit(chartId: ChartId | undefined) {
+export function useDoubleTransit(chartId: ChartId | undefined, enabled = true) {
   return useQuery<DoubleTransitResult, Error>({
     queryKey: ['double-transit', chartId],
     queryFn: () => fetchDoubleTransit(chartId!),
-    enabled: !!chartId,
+    enabled: !!chartId && enabled,
     staleTime: STALE_10MIN,
   });
 }

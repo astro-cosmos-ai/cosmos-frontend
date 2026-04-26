@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { Nav } from '@/components/Nav';
 import { useTransits, useDoubleTransit } from '@/lib/query/transits';
+import { useLoadChart } from '@/lib/query/chart';
 import { getStoredChartId } from '../page';
 
 type TabKey = 'current' | 'double';
@@ -16,24 +17,36 @@ export default function TransitsPage() {
   const [hydrated, setHydrated] = useState(false);
   const [activeTab, setActiveTab] = useState<TabKey>('current');
 
+  const loadMutation = useLoadChart(chartId ?? '');
+
   useEffect(() => {
-    setChartId(getStoredChartId());
+    const id = getStoredChartId();
+    setChartId(id);
     setHydrated(true);
+    if (id) {
+      loadMutation.mutate(undefined);
+    }
+  // loadMutation.mutate is stable — intentionally excluded to run once
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const transitEnabled = !!chartId && loadMutation.isSuccess;
 
   const {
     data: transits,
     isLoading: transitsLoading,
     isError: transitsError,
-  } = useTransits(chartId ?? undefined);
+  } = useTransits(chartId ?? undefined, transitEnabled);
 
   const {
     data: doubleTransit,
     isLoading: doubleLoading,
     isError: doubleError,
-  } = useDoubleTransit(chartId ?? undefined);
+  } = useDoubleTransit(chartId ?? undefined, transitEnabled);
 
-  const isLoading = activeTab === 'current' ? transitsLoading : doubleLoading;
+  const isLoading =
+    loadMutation.isPending ||
+    (activeTab === 'current' ? transitsLoading : doubleLoading);
   const isError = activeTab === 'current' ? transitsError : doubleError;
 
   return (
@@ -80,8 +93,15 @@ export default function TransitsPage() {
           </div>
         )}
 
-        {/* Error */}
-        {hydrated && isError && (
+        {/* Load error */}
+        {hydrated && loadMutation.isError && (
+          <p role="alert" style={{ color: 'var(--negative)', textAlign: 'center', paddingTop: 80 }}>
+            {tc('errorMessage')}
+          </p>
+        )}
+
+        {/* Transit fetch error */}
+        {hydrated && !loadMutation.isError && isError && (
           <p role="alert" style={{ color: 'var(--negative)', textAlign: 'center', paddingTop: 80 }}>
             {tc('errorMessage')}
           </p>
