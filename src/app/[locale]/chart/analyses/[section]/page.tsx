@@ -69,7 +69,7 @@ export default function AnalysisSectionPage({ params }: Props) {
       <main className="page fade-in" style={{ paddingTop: 40 }}>
         {/* Back link */}
         <Link
-          href={`/${locale}/chart/analyses`}
+          href="/chart/analyses"
           className="dim"
           style={{ fontSize: 13, display: 'inline-flex', alignItems: 'center', gap: 6, marginBottom: 28 }}
         >

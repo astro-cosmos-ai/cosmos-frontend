@@ -138,7 +138,7 @@ export default function AnalysesPage() {
                 <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
                   {activeCached && (
                     <Link
-                      href={`/${locale}/chart/analyses/${activeSection}`}
+                      href={`/chart/analyses/${activeSection}`}
                       className="btn"
                       style={{ fontSize: 13 }}
                     >
@@ -187,7 +187,7 @@ export default function AnalysesPage() {
                   </p>
                   {activeCached.content.length > 600 && (
                     <Link
-                      href={`/${locale}/chart/analyses/${activeSection}`}
+                      href={`/chart/analyses/${activeSection}`}
                       style={{ display: 'inline-block', marginTop: 12, fontSize: 13, color: 'var(--accent)' }}
                     >
                       {t('readMore')} →
