@@ -8,6 +8,12 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: ['./tests/setup.ts'],
     globals: true,
+    exclude: ['**/node_modules/**', '**/tests/e2e/**'],
+    env: {
+      NEXT_PUBLIC_BACKEND_URL: 'http://localhost:8000',
+      NEXT_PUBLIC_SUPABASE_URL: 'http://localhost:54321',
+      NEXT_PUBLIC_SUPABASE_ANON_KEY: 'test-anon-key',
+    },
   },
   resolve: { alias: { '@': path.resolve(__dirname, './src') } },
 });
