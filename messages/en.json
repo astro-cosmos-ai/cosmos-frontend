@@ -235,6 +235,66 @@
       "Lion": "Lion"
     }
   },
+  "landing": {
+    "eyebrow": "Vedic Astrology",
+    "headline": "cosmos",
+    "tagline": "Your birth chart, decoded by AI.",
+    "description": "Cosmos combines classical Vedic astrology with AI analysis to reveal the patterns in your natal chart — planets, dashas, yogas, and more.",
+    "getStarted": "Get started",
+    "signIn": "Already have an account? Sign in",
+    "feature1Title": "Natal Chart",
+    "feature1Body": "North and South Indian chart formats with all 9 planets positioned by house and sign.",
+    "feature2Title": "Dasha Timeline",
+    "feature2Body": "120-year Vimshottari dasha sequence with mahadasha and antardasha highlights.",
+    "feature3Title": "AI Analysis",
+    "feature3Body": "Deep-dive sections on personality, career, relationships, health, and more — powered by Claude."
+  },
+  "chartOverview": {
+    "newChart": "Enter birth details",
+    "noChartTitle": "Your chart awaits",
+    "noChartBody": "Enter your birth details to generate your Vedic birth chart.",
+    "chartTitle": "Birth Chart Overview",
+    "birthDetails": "Birth Details",
+    "name": "Name",
+    "date": "Date",
+    "time": "Time",
+    "place": "Place",
+    "bigThree": "Big Three",
+    "ascendant": "Ascendant",
+    "moonSign": "Moon Sign",
+    "sunSign": "Sun Sign",
+    "currentDasha": "Current Dasha",
+    "majorPeriod": "Major Period (Mahadasha)",
+    "minorPeriod": "Minor Period (Antardasha)",
+    "explore": "Explore",
+    "viewBirthChart": "Birth Chart",
+    "viewPlanets": "Planets",
+    "viewDasha": "Dasha",
+    "viewAnalyses": "AI Analysis",
+    "viewChat": "Ask cosmos",
+    "north": "North",
+    "south": "South",
+    "doshaHighlights": "Dosha Highlights",
+    "present": "Present",
+    "absent": "Not Present"
+  },
+  "birthchart": {
+    "title": "Birth Chart",
+    "subtitle": "D1 Rasi — natal positions at birth",
+    "northStyle": "North Indian",
+    "southStyle": "South Indian"
+  },
+  "planetsPage": {
+    "title": "The Nine Planets",
+    "subtitle": "Each planet represents an energy in your chart — its sign, house, and nakshatra reveal how that energy expresses itself.",
+    "dignity": "Dignity"
+  },
+  "dashaPage": {
+    "title": "Vimshottari Dasha",
+    "subtitle": "The 120-year planetary period cycle derived from your Moon's nakshatra at birth.",
+    "loading": "Loading dasha timeline…",
+    "error": "Could not load dasha timeline."
+  },
   "auth": {
     "eyebrow": "Cosmos",
     "signInTitle": "Welcome back",

@@ -1,65 +1,168 @@
-import Image from 'next/image';
+import { redirect } from 'next/navigation';
+import { getTranslations } from 'next-intl/server';
+import { Link } from '@/i18n/navigation';
+import { Nav } from '@/components/Nav';
+import { createClient } from '@/lib/supabase/server';
 
-export default function Home() {
+type Props = {
+  params: Promise<{ locale: string }>;
+};
+
+export default async function LandingPage({ params }: Props) {
+  const { locale } = await params;
+
+  // If the user is already authenticated, send them to the chart overview.
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (user) {
+    redirect(`/${locale}/chart`);
+  }
+
+  const t = await getTranslations({ locale, namespace: 'landing' });
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <>
+      <div className="sky-bg" aria-hidden="true" />
+      <Nav />
+
+      <main className="page fade-slow">
+        {/* Hero */}
+        <section
+          className="section-head"
+          style={{ paddingTop: 'clamp(80px, 12vw, 140px)', marginBottom: 72 }}
+        >
+          {/* Glowing orb */}
+          <div
+            aria-hidden="true"
+            style={{
+              width: 80,
+              height: 80,
+              borderRadius: '50%',
+              margin: '0 auto 36px',
+              background:
+                'radial-gradient(circle at 35% 35%, var(--accent), transparent 70%)',
+              opacity: 0.65,
+              animation: 'breathe 5s ease-in-out infinite',
+            }}
+          />
+
+          <p className="eyebrow">{t('eyebrow')}</p>
+
+          <h1
+            className="serif"
+            style={{ marginBottom: 20, letterSpacing: '-0.01em' }}
+          >
+            {t('headline')}
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{' '}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{' '}
-            or the{' '}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{' '}
-            center.
+
+          <p
+            style={{
+              fontSize: 'clamp(17px, 2vw, 20px)',
+              color: 'var(--ink-soft)',
+              marginBottom: 14,
+              maxWidth: 480,
+              marginInline: 'auto',
+              lineHeight: 1.6,
+            }}
+          >
+            {t('tagline')}
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+
+          <p
+            style={{
+              fontSize: 15,
+              color: 'var(--ink-mute)',
+              maxWidth: 480,
+              marginInline: 'auto',
+              lineHeight: 1.8,
+              marginBottom: 40,
+            }}
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            {t('description')}
+          </p>
+
+          <div
+            style={{
+              display: 'flex',
+              gap: 16,
+              justifyContent: 'center',
+              flexWrap: 'wrap',
+            }}
           >
-            Documentation
-          </a>
-        </div>
+            <Link
+              href="/sign-up"
+              className="btn btn-primary"
+              style={{ padding: '13px 28px', fontSize: 14 }}
+            >
+              {t('getStarted')}
+            </Link>
+          </div>
+
+          <p style={{ marginTop: 20 }}>
+            <Link
+              href="/sign-in"
+              style={{
+                color: 'var(--ink-mute)',
+                fontSize: 13,
+                textDecoration: 'none',
+              }}
+            >
+              {t('signIn')}
+            </Link>
+          </p>
+        </section>
+
+        {/* Feature cards */}
+        <section
+          aria-label={t('eyebrow')}
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+            gap: 20,
+            maxWidth: 900,
+            marginInline: 'auto',
+          }}
+        >
+          {(
+            [
+              { title: t('feature1Title'), body: t('feature1Body') },
+              { title: t('feature2Title'), body: t('feature2Body') },
+              { title: t('feature3Title'), body: t('feature3Body') },
+            ] as { title: string; body: string }[]
+          ).map(({ title, body }) => (
+            <div
+              key={title}
+              className="card"
+              style={{ padding: '28px 30px' }}
+            >
+              <h3
+                className="serif"
+                style={{
+                  fontSize: 19,
+                  fontWeight: 400,
+                  marginBottom: 10,
+                  color: 'var(--ink)',
+                }}
+              >
+                {title}
+              </h3>
+              <p
+                style={{
+                  fontSize: 13.5,
+                  color: 'var(--ink-soft)',
+                  lineHeight: 1.75,
+                  margin: 0,
+                }}
+              >
+                {body}
+              </p>
+            </div>
+          ))}
+        </section>
       </main>
-    </div>
+    </>
   );
 }
