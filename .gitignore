@@ -1,0 +1,19 @@
+# deps
+node_modules/
+
+# env
+.env*.local
+.env.local
+
+# next.js
+.next/
+out/
+
+# testing
+coverage/
+playwright-report/
+test-results/
+
+# misc
+.DS_Store
+*.pem

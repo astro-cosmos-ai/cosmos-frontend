@@ -1,0 +1,121 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -n '{hookSpecificOutput:{hookEventName:\"SessionStart\",additionalContext:\"# cosmos-frontend conventions (loaded at session start)\\n\\n**Reference vs target:**\\n- Target (write here): cosmos-frontend/\\n- Reference (read-only): cosmos-app/ — friend prototype\\n- Backend (call this): cosmos-backend/ via REST/SSE per docs/api-reference.md\\n\\n**Pick the right lane before writing code:**\\n- src/app/** → page-author\\n- src/components/** → component-author\\n- src/lib/api/** → api-client-author\\n- src/lib/supabase/**, src/proxy.ts → auth-wirer\\n- messages/**, src/i18n/** → i18n-author\\n- src/lib/query/** → client-state-author\\n- Code review → code-reviewer\\n- Tests → test-author\\n- Build/runtime/hydration error → debugger\\n- Cross-layer plan → planner\\n\\n**Next.js 16 has BREAKING CHANGES vs training data.** Context7 MCP first for any non-trivial App Router code. params/searchParams are Promise<...> and must be awaited.\\n\\n**Skills auto-loaded into subagents:** react-best-practices, composition-patterns, frontend-design, web-design-guidelines, webapp-testing, context7-mcp; plus superpowers: test-driven-development, verification-before-completion, systematic-debugging, writing-plans, dispatching-parallel-agents, receiving-code-review.\\n\\n**Slash commands:** /add-page, /add-component, /add-locale, /wire-endpoint, /run-frontend, /fetch-docs, /check-frontend.\\n\\n**Rules:** see .claude/rules/.\"}}'",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "prompt=$(jq -r '.prompt // \"\"' 2>/dev/null); hints=\"\"; printf -v nl '\\n'; if echo \"$prompt\" | grep -qiE '\\b(next\\.?js|app router|server component|client component|layout|page|route handler)\\b'; then hints=\"$hints$nl- Next 16 work → page-author. params/searchParams are Promise<...>. Context7 first for any non-trivial pattern.\"; fi; if echo \"$prompt\" | grep -qiE '\\b(component|button|card|chart|modal|form|input)\\b'; then hints=\"$hints$nl- Component work → component-author. Tailwind tokens, no hardcoded strings, semantic HTML.\"; fi; if echo \"$prompt\" | grep -qiE '\\b(supabase|auth|sign.?in|sign.?up|session|jwt)\\b'; then hints=\"$hints$nl- Auth → auth-wirer. Use @supabase/ssr (NOT auth-helpers-nextjs). Middleware refresh required.\"; fi; if echo \"$prompt\" | grep -qiE '\\b(i18n|locale|translation|message|next-intl)\\b'; then hints=\"$hints$nl- i18n → i18n-author or /add-locale. All 3 locale files stay in sync.\"; fi; if echo \"$prompt\" | grep -qiE '\\b(endpoint|api call|backend|fetch|client|sse)\\b'; then hints=\"$hints$nl- Backend integration → api-client-author or /wire-endpoint. All calls via src/lib/api/. JWT Bearer auth.\"; fi; if echo \"$prompt\" | grep -qiE '\\b(react query|tanstack|usequery|usemutation|zustand|state)\\b'; then hints=\"$hints$nl- Server state → client-state-author. React Query in src/lib/query/. No useEffect-fetching.\"; fi; if echo \"$prompt\" | grep -qiE '\\b(tailwind|theme|color|css|style)\\b'; then hints=\"$hints$nl- Styling → component-author + tailwind-tokens rule. Use --bg / --ink / --accent tokens, no hardcoded colors, no dark: variants.\"; fi; if echo \"$prompt\" | grep -qiE '\\b(playwright|vitest|test|e2e|coverage|msw)\\b'; then hints=\"$hints$nl- Tests → test-author. Vitest unit + Playwright E2E + MSW for backend mocking.\"; fi; if echo \"$prompt\" | grep -qiE '\\b(review|code review|pr review)\\b'; then hints=\"$hints$nl- Review → code-reviewer subagent. Read-only.\"; fi; if echo \"$prompt\" | grep -qiE '\\b(bug|failing|error|hydration|build fail|stack trace|404|500)\\b'; then hints=\"$hints$nl- Failure → debugger subagent. systematic-debugging skill loaded.\"; fi; if echo \"$prompt\" | grep -qiE '\\b(plan|design|architect|breakdown|how do i)\\b'; then hints=\"$hints$nl- Multi-layer task → planner subagent.\"; fi; if [ -n \"$hints\" ]; then jq -n --arg h \"$hints\" '{hookSpecificOutput:{hookEventName:\"UserPromptSubmit\",additionalContext:(\"# Routing hints\" + $h)}}'; else echo '{}'; fi",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cmd=$(jq -r '.tool_input.command // \"\"' 2>/dev/null); if echo \"$cmd\" | grep -qE 'rm -rf /|rm -rf ~|rm -rf \\$HOME|git push --force|git reset --hard origin'; then jq -n '{permissionDecision:\"deny\",permissionDecisionReason:\"Destructive command blocked. If you really need this, ask the user explicitly.\"}'; else echo '{}'; fi",
+            "timeout": 5
+          }
+        ]
+      },
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "file=$(jq -r '.tool_input.file_path // \"\"' 2>/dev/null); if echo \"$file\" | grep -qE 'src/app/'; then jq -n '{hookSpecificOutput:{hookEventName:\"PreToolUse\",additionalContext:\"PAGE LANE — delegate to page-author. Next 16: params/searchParams are Promise<...>; await them. Context7 first.\"}}'; elif echo \"$file\" | grep -qE 'src/components/'; then jq -n '{hookSpecificOutput:{hookEventName:\"PreToolUse\",additionalContext:\"COMPONENT LANE — delegate to component-author. Tailwind tokens, no hardcoded strings.\"}}'; elif echo \"$file\" | grep -qE 'src/lib/api/'; then jq -n '{hookSpecificOutput:{hookEventName:\"PreToolUse\",additionalContext:\"API CLIENT LANE — delegate to api-client-author. Reference cosmos-backend/docs/api-reference.md.\"}}'; elif echo \"$file\" | grep -qE 'src/lib/supabase/|src/proxy\\.ts'; then jq -n '{hookSpecificOutput:{hookEventName:\"PreToolUse\",additionalContext:\"AUTH LANE — delegate to auth-wirer. Use @supabase/ssr.\"}}'; elif echo \"$file\" | grep -qE 'messages/|src/i18n/'; then jq -n '{hookSpecificOutput:{hookEventName:\"PreToolUse\",additionalContext:\"I18N LANE — delegate to i18n-author. Keep en/hi/te in sync.\"}}'; elif echo \"$file\" | grep -qE 'src/lib/query/'; then jq -n '{hookSpecificOutput:{hookEventName:\"PreToolUse\",additionalContext:\"QUERY LANE — delegate to client-state-author. React Query v5 conventions.\"}}'; else echo '{}'; fi",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "file=$(jq -r '.tool_input.file_path // \"\"' 2>/dev/null); if echo \"$file\" | grep -qE 'messages/[a-z]+\\.json$'; then jq -n '{hookSpecificOutput:{hookEventName:\"PostToolUse\",additionalContext:\"Locale file changed. Verify all 3 (en/hi/te) have the same key set. Run /check-frontend to audit.\"},suppressOutput:true}'; elif echo \"$file\" | grep -qE 'src/lib/api/'; then jq -n '{hookSpecificOutput:{hookEventName:\"PostToolUse\",additionalContext:\"API client changed. Add a Vitest unit with MSW (delegate to test-author). Update src/lib/query/ hook if response shape changed.\"},suppressOutput:true}'; elif echo \"$file\" | grep -qE 'package\\.json$'; then jq -n '{hookSpecificOutput:{hookEventName:\"PostToolUse\",additionalContext:\"package.json changed. Run npm install. If new lib added, Context7 it before using.\"},suppressOutput:true}'; elif echo \"$file\" | grep -qE 'src/proxy\\.ts$'; then jq -n '{hookSpecificOutput:{hookEventName:\"PostToolUse\",additionalContext:\"Middleware changed. Verify both Supabase session refresh and next-intl locale routing still work — they must coexist.\"},suppressOutput:true}'; else echo '{\"suppressOutput\":true}'; fi",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "PostToolUseFailure": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/scripts/npm-failure-hint.sh",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/scripts/stop-nudge.sh",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  },
+  "permissions": {
+    "allow": [
+      "Skill(react-best-practices)",
+      "Skill(composition-patterns)",
+      "Skill(frontend-design)",
+      "Skill(web-design-guidelines)",
+      "Skill(webapp-testing)",
+      "Skill(context7-mcp)",
+      "Skill(react-view-transitions)",
+      "Skill(deploy-to-vercel)",
+      "Bash(npm --version)",
+      "Bash(npm install*)",
+      "Bash(npm ci)",
+      "Bash(npm run *)",
+      "Bash(npx vitest*)",
+      "Bash(npx playwright*)",
+      "Bash(npx tsc*)",
+      "Bash(node -e *)",
+      "Bash(test -f *)",
+      "Bash(test -d *)",
+      "Bash(ls *)",
+      "Bash(grep *)",
+      "mcp__context7__resolve-library-id",
+      "mcp__context7__get-library-docs",
+      "mcp__supabase__generate_typescript_types"
+    ],
+    "ask": [
+      "Bash(rm *)",
+      "Bash(git push*)",
+      "Bash(git reset --hard*)",
+      "Bash(npm publish*)"
+    ],
+    "deny": [
+      "Bash(rm -rf /*)",
+      "Bash(rm -rf ~*)",
+      "Bash(git push --force *)"
+    ]
+  }
+}
