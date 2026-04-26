@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { Nav } from '@/components/Nav';
 import { useSadeSati } from '@/lib/query/transits';
+import { useLoadChart } from '@/lib/query/chart';
 import { getStoredChartId } from '../page';
 
 export default function SadeSatiPage() {
@@ -13,12 +14,23 @@ export default function SadeSatiPage() {
   const [chartId, setChartId] = useState<string | null>(null);
   const [hydrated, setHydrated] = useState(false);
 
+  const loadMutation = useLoadChart(chartId ?? '');
+
   useEffect(() => {
-    setChartId(getStoredChartId());
+    const id = getStoredChartId();
+    setChartId(id);
     setHydrated(true);
+    if (id) {
+      loadMutation.mutate(undefined);
+    }
+  // loadMutation.mutate is stable — intentionally excluded to run once
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const { data, isLoading, isError } = useSadeSati(chartId ?? undefined);
+  const { data, isLoading, isError } = useSadeSati(
+    chartId ?? undefined,
+    !!chartId && loadMutation.isSuccess,
+  );
 
   return (
     <>
@@ -46,14 +58,21 @@ export default function SadeSatiPage() {
         </div>
 
         {/* Loading */}
-        {(!hydrated || isLoading) && (
+        {(!hydrated || loadMutation.isPending || isLoading) && (
           <div className="dim" style={{ textAlign: 'center', paddingTop: 80 }}>
             {tc('loadingMessage')}
           </div>
         )}
 
-        {/* Error */}
-        {hydrated && isError && (
+        {/* Load error */}
+        {hydrated && loadMutation.isError && (
+          <p role="alert" style={{ color: 'var(--negative)', textAlign: 'center', paddingTop: 80 }}>
+            {tc('errorMessage')}
+          </p>
+        )}
+
+        {/* Fetch error */}
+        {hydrated && !loadMutation.isError && isError && (
           <p role="alert" style={{ color: 'var(--negative)', textAlign: 'center', paddingTop: 80 }}>
             {tc('errorMessage')}
           </p>

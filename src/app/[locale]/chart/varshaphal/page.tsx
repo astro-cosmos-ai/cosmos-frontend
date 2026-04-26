@@ -1,11 +1,12 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useTranslations } from 'next-intl';
 import { Nav } from '@/components/Nav';
 import { NorthChart } from '@/components/NorthChart';
 import { SouthChart } from '@/components/SouthChart';
 import { useVarshaphal } from '@/lib/query/varshaphal';
+import { useLoadChart } from '@/lib/query/chart';
 import { getStoredChartId } from '../page';
 
 const CURRENT_YEAR = new Date().getFullYear();
@@ -20,12 +21,37 @@ export default function VarshaphalPage() {
   const [year, setYear] = useState(CURRENT_YEAR);
   const [chartStyle, setChartStyle] = useState<'north' | 'south'>('north');
 
+  const loadMutation = useLoadChart(chartId ?? '');
+  // Track whether the initial mount load has fired so year-change effect
+  // doesn't double-fire on first render.
+  const mountedRef = useRef(false);
+
   useEffect(() => {
-    setChartId(getStoredChartId());
+    const id = getStoredChartId();
+    setChartId(id);
     setHydrated(true);
+    if (id) {
+      loadMutation.mutate(year);
+    }
+    mountedRef.current = true;
+  // loadMutation.mutate and year are intentionally captured once at mount
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const { data, isLoading, isError } = useVarshaphal(chartId ?? undefined, year);
+  // Re-trigger load whenever year changes after mount.
+  useEffect(() => {
+    if (!mountedRef.current || !chartId) return;
+    loadMutation.reset();
+    loadMutation.mutate(year);
+  // loadMutation.reset/mutate are stable refs; chartId is the identity guard
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [year, chartId]);
+
+  const { data, isLoading, isError } = useVarshaphal(
+    chartId ?? undefined,
+    year,
+    !!chartId && loadMutation.isSuccess,
+  );
 
   const years = Array.from(
     { length: YEAR_RANGE * 2 + 1 },
@@ -100,14 +126,21 @@ export default function VarshaphalPage() {
         </div>
 
         {/* Loading */}
-        {(!hydrated || isLoading) && (
+        {(!hydrated || loadMutation.isPending || isLoading) && (
           <div className="dim" style={{ textAlign: 'center', paddingTop: 80 }}>
             {tc('loadingMessage')}
           </div>
         )}
 
-        {/* Error */}
-        {hydrated && isError && (
+        {/* Load error */}
+        {hydrated && loadMutation.isError && (
+          <p role="alert" style={{ color: 'var(--negative)', textAlign: 'center', paddingTop: 80 }}>
+            {tc('errorMessage')}
+          </p>
+        )}
+
+        {/* Fetch error */}
+        {hydrated && !loadMutation.isError && isError && (
           <p role="alert" style={{ color: 'var(--negative)', textAlign: 'center', paddingTop: 80 }}>
             {tc('errorMessage')}
           </p>

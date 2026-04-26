@@ -40,12 +40,13 @@ export function useDoubleTransit(chartId: ChartId | undefined, enabled = true) {
 /**
  * Fetches the current Sade Sati status for a chart.
  * staleTime: 10 min — same reasoning as useTransits.
+ * Pass `enabled: false` to defer until a prerequisite (e.g. /load) completes.
  */
-export function useSadeSati(chartId: ChartId | undefined) {
+export function useSadeSati(chartId: ChartId | undefined, enabled = true) {
   return useQuery<SadeSatiResult, Error>({
     queryKey: ['sade-sati', chartId],
     queryFn: () => fetchSadeSati(chartId!),
-    enabled: !!chartId,
+    enabled: !!chartId && enabled,
     staleTime: STALE_10MIN,
   });
 }
