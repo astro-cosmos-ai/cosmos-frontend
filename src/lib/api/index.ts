@@ -70,3 +70,5 @@ export { predict } from './prediction';
 export { fetchVarshaphal } from './varshaphal';
 export { computeCompatibility, fetchCompatibility } from './compatibility';
 export { downloadReport } from './report';
+export { searchPlaces } from './places';
+export type { PlaceResult, NominatimPlace, NominatimAddress } from './places';

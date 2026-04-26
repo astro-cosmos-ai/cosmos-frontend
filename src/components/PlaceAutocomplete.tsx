@@ -1,24 +1,9 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
+import { searchPlaces, type NominatimPlace } from '@/lib/api/places';
 
-interface NominatimAddress {
-  city?: string;
-  town?: string;
-  village?: string;
-  hamlet?: string;
-  county?: string;
-  state?: string;
-  country?: string;
-}
-
-interface NominatimResult {
-  place_id: number;
-  display_name: string;
-  lat: string;
-  lon: string;
-  address?: NominatimAddress;
-}
+type NominatimResult = NominatimPlace;
 
 type Status = 'idle' | 'loading' | 'no-results' | 'error';
 
@@ -87,11 +72,7 @@ export function PlaceAutocomplete({ value, onChange }: Props) {
   async function searchNominatim(q: string) {
     const myId = ++requestIdRef.current;
     try {
-      const url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(q)}&format=json&addressdetails=1&limit=6`;
-      const res = await fetch(url, { headers: { 'Accept-Language': 'en' } });
-      if (myId !== requestIdRef.current) return;
-      if (!res.ok) { setStatus('error'); setResults([]); setOpen(true); return; }
-      const data = (await res.json()) as NominatimResult[];
+      const data = await searchPlaces(q);
       if (myId !== requestIdRef.current) return;
       setResults(data);
       setHighlight(0);
