@@ -1,0 +1,192 @@
+{
+  "nav": {
+    "overview": "अवलोकन",
+    "chart": "जन्म कुंडली",
+    "planets": "ग्रह",
+    "dasha": "दशा",
+    "doshas": "दोष",
+    "kp": "केपी प्रणाली",
+    "ashtakavarga": "अष्टकवर्ग",
+    "learn": "जानें",
+    "newChart": "नई कुंडली"
+  },
+  "form": {
+    "title": "जन्म विवरण",
+    "subtitle": "अपनी वैदिक ज्योतिष कुंडली बनाने के लिए जन्म जानकारी दर्ज करें",
+    "name": "पूरा नाम",
+    "namePlaceholder": "अपना पूरा नाम दर्ज करें",
+    "dob": "जन्म तिथि",
+    "tob": "जन्म समय",
+    "pob": "जन्म स्थान",
+    "pobPlaceholder": "शहर खोजें...",
+    "lat": "अक्षांश",
+    "lon": "देशांतर",
+    "timezone": "समय क्षेत्र (UTC अंतर)",
+    "submitButton": "कुंडली बनाएं",
+    "loadingMessage": "कुंडली बन रही है...",
+    "selectPlace": "सुझावों में से एक स्थान चुनें"
+  },
+  "common": {
+    "loadingMessage": "लोड हो रहा है...",
+    "errorMessage": "कुछ गलत हुआ। कृपया पुनः प्रयास करें।",
+    "retro": "वक्री",
+    "house": "भाव",
+    "sign": "राशि",
+    "nakshatra": "नक्षत्र",
+    "degree": "अंश",
+    "lord": "स्वामी"
+  },
+  "overview": {
+    "title": "कुंडली अवलोकन",
+    "birthDetails": "जन्म विवरण",
+    "bigThree": "मुख्य तीन",
+    "ascendant": "लग्न",
+    "moonSign": "चंद्र राशि",
+    "sunSign": "सूर्य राशि",
+    "currentDasha": "वर्तमान दशा",
+    "majorPeriod": "महादशा",
+    "minorPeriod": "अंतर्दशा",
+    "doshaHighlights": "दोष सारांश"
+  },
+  "planets": {
+    "title": "ग्रह",
+    "sun": "सूर्य",
+    "moon": "चंद्र",
+    "mars": "मंगल",
+    "mercury": "बुध",
+    "jupiter": "गुरु",
+    "venus": "शुक्र",
+    "saturn": "शनि",
+    "rahu": "राहु",
+    "ketu": "केतु",
+    "ascendant": "लग्न"
+  },
+  "dasha": {
+    "title": "विंशोत्तरी दशा",
+    "timeline": "120 वर्ष की समय रेखा",
+    "current": "वर्तमान दशा",
+    "major": "महादशा",
+    "minor": "अंतर्दशा",
+    "subMinor": "प्रत्यंतर दशा",
+    "start": "प्रारंभ",
+    "end": "समाप्ति"
+  },
+  "doshas": {
+    "title": "दोष",
+    "manglik": "मांगलिक दोष",
+    "kalsarpa": "काल सर्प दोष",
+    "pitra": "पितृ दोष",
+    "sadhesati": "साढ़े साती",
+    "present": "उपस्थित",
+    "absent": "अनुपस्थित",
+    "cancelled": "निरस्त",
+    "effective": "प्रभावी"
+  },
+  "kp": {
+    "title": "केपी प्रणाली",
+    "planets": "ग्रह उप-स्वामी",
+    "cusps": "भाव संधि",
+    "significators": "भाव कारक"
+  },
+  "ashtakavarga": {
+    "title": "अष्टकवर्ग",
+    "combined": "संयुक्त (सर्वाष्टकवर्ग)",
+    "bindus": "बिंदु",
+    "strongestSigns": "सबसे बलवान राशियाँ"
+  },
+  "signs": {
+    "Aries": "मेष",
+    "Taurus": "वृषभ",
+    "Gemini": "मिथुन",
+    "Cancer": "कर्क",
+    "Leo": "सिंह",
+    "Virgo": "कन्या",
+    "Libra": "तुला",
+    "Scorpio": "वृश्चिक",
+    "Sagittarius": "धनु",
+    "Capricorn": "मकर",
+    "Aquarius": "कुंभ",
+    "Pisces": "मीन"
+  },
+  "nakshatras": {
+    "Ashwini": "अश्विनी",
+    "Bharani": "भरणी",
+    "Krittika": "कृत्तिका",
+    "Rohini": "रोहिणी",
+    "Mrigashira": "मृगशिरा",
+    "Ardra": "आर्द्रा",
+    "Punarvasu": "पुनर्वसु",
+    "Pushya": "पुष्य",
+    "Ashlesha": "आश्लेषा",
+    "Magha": "मघा",
+    "Purva Phalguni": "पूर्व फाल्गुनी",
+    "Uttara Phalguni": "उत्तर फाल्गुनी",
+    "Hasta": "हस्त",
+    "Chitra": "चित्रा",
+    "Swati": "स्वाति",
+    "Vishakha": "विशाखा",
+    "Anuradha": "अनुराधा",
+    "Jyeshtha": "ज्येष्ठा",
+    "Mula": "मूल",
+    "Purva Ashadha": "पूर्वाषाढ़ा",
+    "Uttara Ashadha": "उत्तराषाढ़ा",
+    "Shravana": "श्रवण",
+    "Dhanishta": "धनिष्ठा",
+    "Shatabhisha": "शतभिषा",
+    "Purva Bhadrapada": "पूर्व भाद्रपद",
+    "Uttara Bhadrapada": "उत्तर भाद्रपद",
+    "Revati": "रेवती"
+  },
+  "planetNames": {
+    "Sun": "सूर्य",
+    "Moon": "चंद्र",
+    "Mars": "मंगल",
+    "Mercury": "बुध",
+    "Jupiter": "गुरु",
+    "Venus": "शुक्र",
+    "Saturn": "शनि",
+    "Rahu": "राहु",
+    "Ketu": "केतु",
+    "Ascendant": "लग्न"
+  },
+  "vedic": {
+    "varna": {
+      "Brahmin": "ब्राह्मण",
+      "Kshatriya": "क्षत्रिय",
+      "Vaishya": "वैश्य",
+      "Shudra": "शूद्र"
+    },
+    "tatva": {
+      "Fire": "अग्नि",
+      "Earth": "पृथ्वी",
+      "Air": "वायु",
+      "Water": "जल"
+    },
+    "gana": {
+      "Deva": "देव",
+      "Manushya": "मनुष्य",
+      "Rakshasa": "राक्षस"
+    },
+    "nadi": {
+      "Adi": "आदि",
+      "Madhya": "मध्य",
+      "Antya": "अंत्य"
+    },
+    "yoni": {
+      "Horse": "अश्व",
+      "Elephant": "गज",
+      "Sheep": "मेष",
+      "Serpent": "सर्प",
+      "Dog": "श्वान",
+      "Cat": "मार्जार",
+      "Rat": "मूषक",
+      "Cow": "गौ",
+      "Buffalo": "महिष",
+      "Tiger": "व्याघ्र",
+      "Deer": "मृग",
+      "Monkey": "वानर",
+      "Mongoose": "नकुल",
+      "Lion": "सिंह"
+    }
+  }
+}

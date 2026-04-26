@@ -1,0 +1,192 @@
+{
+  "nav": {
+    "overview": "Overview",
+    "chart": "Birth Chart",
+    "planets": "Planets",
+    "dasha": "Dasha",
+    "doshas": "Doshas",
+    "kp": "KP System",
+    "ashtakavarga": "Ashtakavarga",
+    "learn": "Learn",
+    "newChart": "New Chart"
+  },
+  "form": {
+    "title": "Birth Details",
+    "subtitle": "Enter your birth information to generate your Vedic astrology chart",
+    "name": "Full Name",
+    "namePlaceholder": "Enter your full name",
+    "dob": "Date of Birth",
+    "tob": "Time of Birth",
+    "pob": "Place of Birth",
+    "pobPlaceholder": "Search for a city...",
+    "lat": "Latitude",
+    "lon": "Longitude",
+    "timezone": "Timezone (UTC offset)",
+    "submitButton": "Generate Chart",
+    "loadingMessage": "Generating your chart...",
+    "selectPlace": "Select a place from the suggestions"
+  },
+  "common": {
+    "loadingMessage": "Loading...",
+    "errorMessage": "Something went wrong. Please try again.",
+    "retro": "Retrograde",
+    "house": "House",
+    "sign": "Sign",
+    "nakshatra": "Nakshatra",
+    "degree": "Degree",
+    "lord": "Lord"
+  },
+  "overview": {
+    "title": "Birth Chart Overview",
+    "birthDetails": "Birth Details",
+    "bigThree": "Big Three",
+    "ascendant": "Ascendant",
+    "moonSign": "Moon Sign",
+    "sunSign": "Sun Sign",
+    "currentDasha": "Current Dasha",
+    "majorPeriod": "Major Period",
+    "minorPeriod": "Minor Period",
+    "doshaHighlights": "Dosha Highlights"
+  },
+  "planets": {
+    "title": "Planets",
+    "sun": "Sun",
+    "moon": "Moon",
+    "mars": "Mars",
+    "mercury": "Mercury",
+    "jupiter": "Jupiter",
+    "venus": "Venus",
+    "saturn": "Saturn",
+    "rahu": "Rahu",
+    "ketu": "Ketu",
+    "ascendant": "Ascendant"
+  },
+  "dasha": {
+    "title": "Vimshottari Dasha",
+    "timeline": "120-Year Timeline",
+    "current": "Current Period",
+    "major": "Major (Mahadasha)",
+    "minor": "Minor (Antardasha)",
+    "subMinor": "Sub-Minor (Pratyantar)",
+    "start": "Start",
+    "end": "End"
+  },
+  "doshas": {
+    "title": "Doshas",
+    "manglik": "Manglik Dosha",
+    "kalsarpa": "Kalsarpa Dosha",
+    "pitra": "Pitra Dosha",
+    "sadhesati": "Sadhe Sati",
+    "present": "Present",
+    "absent": "Not Present",
+    "cancelled": "Cancelled",
+    "effective": "Effective"
+  },
+  "kp": {
+    "title": "KP System",
+    "planets": "Planet Sub-Lords",
+    "cusps": "House Cusps",
+    "significators": "House Significators"
+  },
+  "ashtakavarga": {
+    "title": "Ashtakavarga",
+    "combined": "Combined (Sarvashtaka)",
+    "bindus": "Bindus",
+    "strongestSigns": "Strongest Signs"
+  },
+  "signs": {
+    "Aries": "Aries",
+    "Taurus": "Taurus",
+    "Gemini": "Gemini",
+    "Cancer": "Cancer",
+    "Leo": "Leo",
+    "Virgo": "Virgo",
+    "Libra": "Libra",
+    "Scorpio": "Scorpio",
+    "Sagittarius": "Sagittarius",
+    "Capricorn": "Capricorn",
+    "Aquarius": "Aquarius",
+    "Pisces": "Pisces"
+  },
+  "nakshatras": {
+    "Ashwini": "Ashwini",
+    "Bharani": "Bharani",
+    "Krittika": "Krittika",
+    "Rohini": "Rohini",
+    "Mrigashira": "Mrigashira",
+    "Ardra": "Ardra",
+    "Punarvasu": "Punarvasu",
+    "Pushya": "Pushya",
+    "Ashlesha": "Ashlesha",
+    "Magha": "Magha",
+    "Purva Phalguni": "Purva Phalguni",
+    "Uttara Phalguni": "Uttara Phalguni",
+    "Hasta": "Hasta",
+    "Chitra": "Chitra",
+    "Swati": "Swati",
+    "Vishakha": "Vishakha",
+    "Anuradha": "Anuradha",
+    "Jyeshtha": "Jyeshtha",
+    "Mula": "Mula",
+    "Purva Ashadha": "Purva Ashadha",
+    "Uttara Ashadha": "Uttara Ashadha",
+    "Shravana": "Shravana",
+    "Dhanishta": "Dhanishta",
+    "Shatabhisha": "Shatabhisha",
+    "Purva Bhadrapada": "Purva Bhadrapada",
+    "Uttara Bhadrapada": "Uttara Bhadrapada",
+    "Revati": "Revati"
+  },
+  "planetNames": {
+    "Sun": "Sun",
+    "Moon": "Moon",
+    "Mars": "Mars",
+    "Mercury": "Mercury",
+    "Jupiter": "Jupiter",
+    "Venus": "Venus",
+    "Saturn": "Saturn",
+    "Rahu": "Rahu",
+    "Ketu": "Ketu",
+    "Ascendant": "Ascendant"
+  },
+  "vedic": {
+    "varna": {
+      "Brahmin": "Brahmin",
+      "Kshatriya": "Kshatriya",
+      "Vaishya": "Vaishya",
+      "Shudra": "Shudra"
+    },
+    "tatva": {
+      "Fire": "Fire",
+      "Earth": "Earth",
+      "Air": "Air",
+      "Water": "Water"
+    },
+    "gana": {
+      "Deva": "Deva",
+      "Manushya": "Manushya",
+      "Rakshasa": "Rakshasa"
+    },
+    "nadi": {
+      "Adi": "Adi",
+      "Madhya": "Madhya",
+      "Antya": "Antya"
+    },
+    "yoni": {
+      "Horse": "Horse",
+      "Elephant": "Elephant",
+      "Sheep": "Sheep",
+      "Serpent": "Serpent",
+      "Dog": "Dog",
+      "Cat": "Cat",
+      "Rat": "Rat",
+      "Cow": "Cow",
+      "Buffalo": "Buffalo",
+      "Tiger": "Tiger",
+      "Deer": "Deer",
+      "Monkey": "Monkey",
+      "Mongoose": "Mongoose",
+      "Lion": "Lion"
+    }
+  }
+}
