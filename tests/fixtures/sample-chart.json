@@ -1,0 +1,212 @@
+{
+  "id": "chart-abc-123",
+  "user_id": "user-xyz-456",
+  "name": "Test User",
+  "dob": "1990-06-15",
+  "tob": "06:30:00",
+  "pob_name": "Mumbai, India",
+  "pob_lat": 19.076,
+  "pob_lon": 72.8777,
+  "timezone": 5.5,
+  "astro_details": {
+    "ascendant": "Cancer",
+    "ascendant_sign_num": 4,
+    "tithi": "Panchami",
+    "yoga": "Siddhi",
+    "karana": "Bava",
+    "vaara": "Friday"
+  },
+  "planets": {
+    "Sun": {
+      "name": "Sun",
+      "current_sign": 3,
+      "sign": "Gemini",
+      "full_degree": 60.45,
+      "nakshatra": "Mrigashira",
+      "nakshatra_pad": 3,
+      "nakshatraLord": "Mars",
+      "house_parashari": 12,
+      "isRetro": "false"
+    },
+    "Moon": {
+      "name": "Moon",
+      "current_sign": 8,
+      "sign": "Scorpio",
+      "full_degree": 222.78,
+      "nakshatra": "Anuradha",
+      "nakshatra_pad": 2,
+      "nakshatraLord": "Saturn",
+      "house_parashari": 5,
+      "isRetro": "false"
+    },
+    "Mars": {
+      "name": "Mars",
+      "current_sign": 4,
+      "sign": "Cancer",
+      "full_degree": 95.12,
+      "nakshatra": "Pushya",
+      "nakshatra_pad": 1,
+      "nakshatraLord": "Saturn",
+      "house_parashari": 1,
+      "isRetro": "false"
+    },
+    "Mercury": {
+      "name": "Mercury",
+      "current_sign": 3,
+      "sign": "Gemini",
+      "full_degree": 72.34,
+      "nakshatra": "Ardra",
+      "nakshatra_pad": 4,
+      "nakshatraLord": "Rahu",
+      "house_parashari": 12,
+      "isRetro": "false"
+    },
+    "Jupiter": {
+      "name": "Jupiter",
+      "current_sign": 4,
+      "sign": "Cancer",
+      "full_degree": 100.56,
+      "nakshatra": "Pushya",
+      "nakshatra_pad": 3,
+      "nakshatraLord": "Saturn",
+      "house_parashari": 1,
+      "isRetro": "false"
+    },
+    "Venus": {
+      "name": "Venus",
+      "current_sign": 2,
+      "sign": "Taurus",
+      "full_degree": 45.89,
+      "nakshatra": "Rohini",
+      "nakshatra_pad": 2,
+      "nakshatraLord": "Moon",
+      "house_parashari": 11,
+      "isRetro": "false"
+    },
+    "Saturn": {
+      "name": "Saturn",
+      "current_sign": 10,
+      "sign": "Capricorn",
+      "full_degree": 285.23,
+      "nakshatra": "Uttara Ashadha",
+      "nakshatra_pad": 1,
+      "nakshatraLord": "Sun",
+      "house_parashari": 7,
+      "isRetro": "true"
+    },
+    "Rahu": {
+      "name": "Rahu",
+      "current_sign": 11,
+      "sign": "Aquarius",
+      "full_degree": 315.67,
+      "nakshatra": "Shatabhisha",
+      "nakshatra_pad": 4,
+      "nakshatraLord": "Rahu",
+      "house_parashari": 8,
+      "isRetro": "true"
+    },
+    "Ketu": {
+      "name": "Ketu",
+      "current_sign": 5,
+      "sign": "Leo",
+      "full_degree": 135.67,
+      "nakshatra": "Purva Phalguni",
+      "nakshatra_pad": 4,
+      "nakshatraLord": "Venus",
+      "house_parashari": 2,
+      "isRetro": "true"
+    }
+  },
+  "current_dasha": {
+    "major": {
+      "planet": "Jupiter",
+      "start": "2019-03-10",
+      "end": "2035-03-10"
+    },
+    "minor": {
+      "planet": "Saturn",
+      "start": "2023-07-04",
+      "end": "2025-11-14"
+    },
+    "sub_minor": {
+      "planet": "Mercury",
+      "start": "2024-06-01",
+      "end": "2024-10-20"
+    }
+  },
+  "dashas": {
+    "mahadashas": [
+      { "planet": "Moon", "start": "1987-01-01", "end": "1997-01-01" },
+      { "planet": "Mars", "start": "1997-01-01", "end": "2004-01-01" },
+      { "planet": "Rahu", "start": "2004-01-01", "end": "2022-01-01" },
+      { "planet": "Jupiter", "start": "2022-01-01", "end": "2038-01-01" },
+      { "planet": "Saturn", "start": "2038-01-01", "end": "2057-01-01" }
+    ]
+  },
+  "ashtakavarga": {
+    "Sun": {
+      "Aries": 4, "Taurus": 5, "Gemini": 3, "Cancer": 6,
+      "Leo": 5, "Virgo": 4, "Libra": 3, "Scorpio": 5,
+      "Sagittarius": 4, "Capricorn": 3, "Aquarius": 4, "Pisces": 5
+    },
+    "Moon": {
+      "Aries": 3, "Taurus": 6, "Gemini": 4, "Cancer": 5,
+      "Leo": 3, "Virgo": 4, "Libra": 5, "Scorpio": 4,
+      "Sagittarius": 3, "Capricorn": 4, "Aquarius": 3, "Pisces": 4
+    }
+  },
+  "doshas": {
+    "manglik": { "present": false },
+    "kaal_sarp": { "active": false },
+    "pitra": { "present": false },
+    "sade_sati": { "active": false, "status": "inactive" }
+  },
+  "yogas": [
+    {
+      "name": "Gaja Kesari",
+      "present": true,
+      "description": "Jupiter and Moon in mutual kendras — bestows wisdom, fame, and prosperity."
+    },
+    {
+      "name": "Hamsa",
+      "present": true,
+      "description": "Jupiter in exaltation or own sign in a kendra — one of the five Pancha Mahapurusha yogas."
+    }
+  ],
+  "parashari_significators": {
+    "1": ["Mars", "Jupiter"],
+    "5": ["Moon", "Jupiter"],
+    "7": ["Saturn"]
+  },
+  "divisional_charts": {
+    "D1": {
+      "1": { "sign": 4, "sign_name": "Cancer" },
+      "2": { "sign": 5, "sign_name": "Leo" },
+      "3": { "sign": 6, "sign_name": "Virgo" },
+      "4": { "sign": 7, "sign_name": "Libra" },
+      "5": { "sign": 8, "sign_name": "Scorpio" },
+      "6": { "sign": 9, "sign_name": "Sagittarius" },
+      "7": { "sign": 10, "sign_name": "Capricorn" },
+      "8": { "sign": 11, "sign_name": "Aquarius" },
+      "9": { "sign": 12, "sign_name": "Pisces" },
+      "10": { "sign": 1, "sign_name": "Aries" },
+      "11": { "sign": 2, "sign_name": "Taurus" },
+      "12": { "sign": 3, "sign_name": "Gemini" }
+    },
+    "D9": {
+      "1": { "sign": 9, "sign_name": "Sagittarius" },
+      "2": { "sign": 10, "sign_name": "Capricorn" }
+    },
+    "moon_chart": {
+      "1": { "sign": 8, "sign_name": "Scorpio" },
+      "2": { "sign": 9, "sign_name": "Sagittarius" }
+    }
+  },
+  "panchang": {
+    "tithi": "Panchami",
+    "yoga": "Siddhi",
+    "karana": "Bava",
+    "vaara": "Friday"
+  },
+  "created_at": "2024-01-15T10:30:00.000Z"
+}
