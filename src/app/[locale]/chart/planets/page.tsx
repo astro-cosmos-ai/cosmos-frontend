@@ -31,7 +31,7 @@ export default function PlanetsPage() {
   // Build ordered planet list, skipping any names the backend didn't return
   const planets: Planet[] = chart
     ? PLANET_ORDER.flatMap((name) => {
-        const p = chart.planets[name];
+        const p = chart.planets[name.toLowerCase()];
         return p ? [p] : [];
       })
     : [];

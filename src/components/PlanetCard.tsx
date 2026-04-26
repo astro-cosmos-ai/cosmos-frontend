@@ -24,7 +24,7 @@ export function PlanetCard({ planet }: Props) {
   const tn = useTranslations('nakshatras');
 
   const isRetro = planet.isRetro === 'true';
-  const color = PLANET_COLOR[planet.name] ?? 'var(--ink)';
+  const color = PLANET_COLOR[planet.name.charAt(0).toUpperCase() + planet.name.slice(1)] ?? 'var(--ink)';
   const deg = planet.full_degree % 30;
 
   return (
