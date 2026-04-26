@@ -46,11 +46,11 @@ function ChartOverview({ chart }: { chart: Chart }) {
   const minorDasha = chart.current_dasha?.minor;
 
   const quickLinks = [
-    { key: 'viewBirthChart', href: `/${locale}/chart/birthchart` },
-    { key: 'viewPlanets',    href: `/${locale}/chart/planets` },
-    { key: 'viewDasha',      href: `/${locale}/chart/dasha` },
-    { key: 'viewAnalyses',   href: `/${locale}/chart/analyses` },
-    { key: 'viewChat',       href: `/${locale}/chart/chat` },
+    { key: 'viewBirthChart', href: '/chart/birthchart' },
+    { key: 'viewPlanets',    href: '/chart/planets' },
+    { key: 'viewDasha',      href: '/chart/dasha' },
+    { key: 'viewAnalyses',   href: '/chart/analyses' },
+    { key: 'viewChat',       href: '/chart/chat' },
   ] as const;
 
   return (
