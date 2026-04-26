@@ -8,14 +8,13 @@ import { ThemeSwitcher } from './ThemeSwitcher';
 import { LocaleSwitcher } from './LocaleSwitcher';
 
 const PAGES = [
-  { key: 'overview', path: '/chart' },
-  { key: 'chart', path: '/chart/birthchart' },
-  { key: 'planets', path: '/planets' },
-  { key: 'dasha', path: '/dasha' },
-  { key: 'doshas', path: '/doshas' },
-  { key: 'kp', path: '/kp' },
-  { key: 'ashtakavarga', path: '/ashtakavarga' },
-  { key: 'learn', path: '/learn' },
+  { key: 'overview',  path: '/chart' },
+  { key: 'chart',     path: '/chart/birthchart' },
+  { key: 'planets',   path: '/chart/planets' },
+  { key: 'dasha',     path: '/chart/dasha' },
+  { key: 'transits',  path: '/chart/transits' },
+  { key: 'analyses',  path: '/chart/analyses' },
+  { key: 'chat',      path: '/chart/chat' },
 ] as const;
 
 export function Nav() {
