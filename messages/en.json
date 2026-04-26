@@ -39,6 +39,7 @@
     "placeholder": "Choose a date",
     "calendarLabel": "Date picker calendar",
     "typePlaceholder": "Type: 01-Jun-1997 or 1997-06-01",
+    "typeInputLabel": "Type a date directly",
     "prevLabel": "Previous",
     "nextLabel": "Next",
     "today": "Today",
@@ -70,7 +71,9 @@
     "hour": "Hour",
     "minute": "Minute",
     "now": "Now",
-    "done": "Done"
+    "done": "Done",
+    "decrease": "Decrease",
+    "increase": "Increase"
   },
   "common": {
     "loadingMessage": "Loading...",
@@ -293,7 +296,8 @@
     "title": "Vimshottari Dasha",
     "subtitle": "The 120-year planetary period cycle derived from your Moon's nakshatra at birth.",
     "loading": "Loading dasha timeline…",
-    "error": "Could not load dasha timeline."
+    "error": "Could not load dasha timeline.",
+    "vimshottari": "Vimshottari"
   },
   "transitsPage": {
     "eyebrow": "Transits",
@@ -477,6 +481,12 @@
       "Ashtakavarga scores",
       "AI analysis across 16 life areas"
     ]
+  },
+  "northChart": {
+    "asc": "ASC",
+    "ariaLabel": "North Indian birth chart",
+    "title": "North Indian birth chart",
+    "titleWithAsc": "North Indian birth chart, Ascendant {ascendant}"
   },
   "auth": {
     "eyebrow": "Cosmos",

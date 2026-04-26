@@ -32,6 +32,7 @@ type Props = {
   value: string;
   onChange: (time: string) => void;
   placeholder?: string;
+  id?: string;
 };
 
 type StepperProps = {
@@ -42,9 +43,11 @@ type StepperProps = {
   max: number;
   wrap?: boolean;
   padValue?: boolean;
+  decreaseLabel: string;
+  increaseLabel: string;
 };
 
-function Stepper({ label, value, onChange, min, max, wrap, padValue }: StepperProps) {
+function Stepper({ label, value, onChange, min, max, wrap, padValue, decreaseLabel, increaseLabel }: StepperProps) {
   function dec() {
     const next = value - 1;
     onChange(next < min ? (wrap ? max : min) : next);
@@ -60,17 +63,17 @@ function Stepper({ label, value, onChange, min, max, wrap, padValue }: StepperPr
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
         background: 'var(--bg-elev)', borderRadius: 10, padding: 4,
       }}>
-        <button type="button" className="step-btn" onClick={dec} aria-label={`Decrease ${label}`}>−</button>
+        <button type="button" className="step-btn" onClick={dec} aria-label={`${decreaseLabel} ${label}`}>−</button>
         <span className="serif" style={{ fontSize: 20, fontWeight: 300, minWidth: 32, textAlign: 'center' }}>
           {padValue ? pad2(value) : value}
         </span>
-        <button type="button" className="step-btn" onClick={inc} aria-label={`Increase ${label}`}>+</button>
+        <button type="button" className="step-btn" onClick={inc} aria-label={`${increaseLabel} ${label}`}>+</button>
       </div>
     </div>
   );
 }
 
-export function TimePicker({ value, onChange, placeholder }: Props) {
+export function TimePicker({ value, onChange, placeholder, id }: Props) {
   const t = useTranslations('timepicker');
   const [open, setOpen] = useState(false);
   const [typed, setTyped] = useState('');
@@ -113,6 +116,7 @@ export function TimePicker({ value, onChange, placeholder }: Props) {
   return (
     <div ref={ref} style={{ position: 'relative' }} onKeyDown={onKeyDown}>
       <button
+        id={id}
         type="button"
         onClick={() => setOpen((o) => !o)}
         aria-haspopup="dialog"
@@ -181,8 +185,8 @@ export function TimePicker({ value, onChange, placeholder }: Props) {
 
           {/* Hour / minute steppers */}
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14, marginBottom: 16 }}>
-            <Stepper label={t('hour')} value={h12} onChange={setH12} min={1} max={12} wrap />
-            <Stepper label={t('minute')} value={mm} onChange={setMin} min={0} max={59} wrap padValue />
+            <Stepper label={t('hour')} value={h12} onChange={setH12} min={1} max={12} wrap decreaseLabel={t('decrease')} increaseLabel={t('increase')} />
+            <Stepper label={t('minute')} value={mm} onChange={setMin} min={0} max={59} wrap padValue decreaseLabel={t('decrease')} increaseLabel={t('increase')} />
           </div>
 
           {/* AM / PM toggle */}

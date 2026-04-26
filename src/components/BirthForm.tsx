@@ -79,13 +79,13 @@ export function BirthForm({ onSuccess }: Props) {
           <label className="field-label" htmlFor="birth-dob">
             {t('dob')}
           </label>
-          <DatePicker value={dob} onChange={setDob} />
+          <DatePicker value={dob} onChange={setDob} id="birth-dob" />
         </div>
         <div>
           <label className="field-label" htmlFor="birth-tob">
             {t('tob')}
           </label>
-          <TimePicker value={tob} onChange={setTob} />
+          <TimePicker value={tob} onChange={setTob} id="birth-tob" />
         </div>
       </div>
 

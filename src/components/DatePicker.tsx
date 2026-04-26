@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 
 const MONTH_KEYS = [
   'january', 'february', 'march', 'april', 'may', 'june',
@@ -20,10 +20,10 @@ function parseISODate(s: string): Date {
 const toISODate = (d: Date) =>
   `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
 
-function formatPretty(s: string): string {
+function formatPretty(s: string, locale: string): string {
   if (!s) return '';
   const d = parseISODate(s);
-  return d.toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' });
+  return d.toLocaleDateString(locale, { day: 'numeric', month: 'long', year: 'numeric' });
 }
 
 function tryParseFlexible(s: string): string | null {
@@ -53,10 +53,12 @@ type Props = {
   value: Date | null;
   onChange: (date: Date) => void;
   placeholder?: string;
+  id?: string;
 };
 
-export function DatePicker({ value, onChange, placeholder }: Props) {
+export function DatePicker({ value, onChange, placeholder, id }: Props) {
   const t = useTranslations('datepicker');
+  const locale = useLocale();
   const isoValue = value ? toISODate(value) : '';
 
   const [open, setOpen] = useState(false);
@@ -106,6 +108,7 @@ export function DatePicker({ value, onChange, placeholder }: Props) {
   return (
     <div ref={ref} style={{ position: 'relative' }} onKeyDown={onKeyDown}>
       <button
+        id={id}
         type="button"
         onClick={() => setOpen((o) => !o)}
         aria-haspopup="dialog"
@@ -120,7 +123,7 @@ export function DatePicker({ value, onChange, placeholder }: Props) {
           color: isoValue ? 'var(--ink)' : 'var(--ink-mute)',
         }}
       >
-        <span>{isoValue ? formatPretty(isoValue) : (placeholder ?? t('placeholder'))}</span>
+        <span>{isoValue ? formatPretty(isoValue, locale) : (placeholder ?? t('placeholder'))}</span>
         <span style={{ color: 'var(--ink-mute)', fontSize: 14 }} aria-hidden="true">◐</span>
       </button>
 
@@ -146,6 +149,7 @@ export function DatePicker({ value, onChange, placeholder }: Props) {
           {/* Free-text input — fastest path for distant years */}
           <input
             className="input"
+            aria-label={t('typeInputLabel')}
             placeholder={t('typePlaceholder')}
             value={typed}
             onChange={(e) => { setTyped(e.target.value); setTypeError(false); }}
@@ -246,7 +250,7 @@ export function DatePicker({ value, onChange, placeholder }: Props) {
                       type="button"
                       onClick={() => pick(d)}
                       className="dp-cell"
-                      aria-label={cur.toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })}
+                      aria-label={cur.toLocaleDateString(locale, { day: 'numeric', month: 'long', year: 'numeric' })}
                       aria-pressed={isSel}
                       data-selected={isSel ? 'true' : undefined}
                       data-today={isToday ? 'true' : undefined}

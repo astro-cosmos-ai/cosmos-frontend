@@ -1,3 +1,4 @@
+import { useTranslations } from 'next-intl';
 import type { Chart } from '@/lib/api/types';
 
 const SHORT: Record<string, string> = {
@@ -26,6 +27,7 @@ type Props = {
 };
 
 export function NorthChart({ chart, size = 480 }: Props) {
+  const t = useTranslations('northChart');
   const ascSignNum = SIGN_TO_NUM[chart.astro_details.ascendant] ?? 1;
 
   // Group planet abbreviations by parashari house
@@ -78,14 +80,26 @@ export function NorthChart({ chart, size = 480 }: Props) {
   ];
 
   return (
+    <>
     <svg
       viewBox={`0 0 ${S} ${S}`}
       width={size}
       height={size}
       role="img"
-      aria-label="North Indian birth chart"
+      aria-label={t('ariaLabel')}
       style={{ display: 'block', maxWidth: '100%' }}
     >
+      <title>
+        {chart.astro_details.ascendant
+          ? t('titleWithAsc', { ascendant: chart.astro_details.ascendant })
+          : t('title')}
+      </title>
+      <desc>
+        {Object.values(chart.planets)
+          .filter((p) => p.name !== 'Ascendant')
+          .map((p) => `${p.name} in ${p.sign}, house ${p.house_parashari}`)
+          .join('; ')}
+      </desc>
       {/* Background */}
       <rect x="0" y="0" width={S} height={S}
         fill="var(--bg-card-solid)" stroke="var(--border-strong)" strokeWidth="1.5" />
@@ -159,8 +173,15 @@ export function NorthChart({ chart, size = 480 }: Props) {
           fill: 'var(--accent)',
         }}
       >
-        ASC
+        {t('asc')}
       </text>
     </svg>
+    <p className="sr-only">
+      {Object.values(chart.planets)
+        .filter((p) => p.name !== 'Ascendant')
+        .map((p) => `${p.name} in ${p.sign}, house ${p.house_parashari}`)
+        .join('; ')}
+    </p>
+    </>
   );
 }

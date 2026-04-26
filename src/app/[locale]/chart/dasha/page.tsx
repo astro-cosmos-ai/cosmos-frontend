@@ -28,7 +28,7 @@ export default function DashaPage() {
       <main className="page fade-in" style={{ paddingTop: 40 }}>
         {/* Page header */}
         <div className="section-head" style={{ textAlign: 'left', marginBottom: 36 }}>
-          <div className="eyebrow" style={{ marginBottom: 12 }}>Vimshottari</div>
+          <div className="eyebrow" style={{ marginBottom: 12 }}>{t('vimshottari')}</div>
           <h1 className="serif">{t('title')}</h1>
           <p className="muted" style={{ marginTop: 8, fontSize: 14, maxWidth: 560 }}>
             {t('subtitle')}

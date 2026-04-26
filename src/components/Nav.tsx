@@ -77,7 +77,7 @@ export function Nav() {
             </button>
           ) : (
             <Link
-              href="/auth/signin"
+              href="/sign-in"
               className="btn"
               style={{ padding: '6px 14px', fontSize: 12 }}
             >

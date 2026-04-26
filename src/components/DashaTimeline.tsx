@@ -1,4 +1,4 @@
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import type { TimelineResponse, TimelineEntry, Antardasha } from '@/lib/api/types';
 
 const PLANET_COLOR: Record<string, string> = {
@@ -17,9 +17,9 @@ type Props = {
   timeline: TimelineResponse;
 };
 
-function formatDate(iso: string): string {
+function formatDate(iso: string, locale: string): string {
   const d = new Date(iso);
-  return d.toLocaleDateString('en-IN', { month: 'short', year: 'numeric' });
+  return d.toLocaleDateString(locale, { month: 'short', year: 'numeric' });
 }
 
 function isActive(start: string, end: string): boolean {
@@ -45,9 +45,10 @@ type MahaRowProps = {
   currentMinor: string;
   t: ReturnType<typeof useTranslations>;
   tp: ReturnType<typeof useTranslations>;
+  locale: string;
 };
 
-function MahaRow({ entry, spanYears, currentMajor, currentMinor, t, tp }: MahaRowProps) {
+function MahaRow({ entry, spanYears, currentMajor, currentMinor, t, tp, locale }: MahaRowProps) {
   const active = isActive(entry.start, entry.end);
   const color = PLANET_COLOR[entry.planet] ?? 'var(--ink)';
   const widthPct = (durationYears(entry.start, entry.end) / spanYears) * 100;
@@ -94,7 +95,7 @@ function MahaRow({ entry, spanYears, currentMajor, currentMinor, t, tp }: MahaRo
           </span>
         )}
         <span className="dim" style={{ fontSize: 12, marginLeft: 'auto' }}>
-          {formatDate(entry.start)} – {formatDate(entry.end)}
+          {formatDate(entry.start, locale)} – {formatDate(entry.end, locale)}
         </span>
       </div>
 
@@ -166,7 +167,7 @@ function MahaRow({ entry, spanYears, currentMajor, currentMinor, t, tp }: MahaRo
                   </span>
                 )}
                 <span className="dim" style={{ fontSize: 11, marginLeft: 'auto' }}>
-                  {formatDate(ad.start)} – {formatDate(ad.end)}
+                  {formatDate(ad.start, locale)} – {formatDate(ad.end, locale)}
                 </span>
               </div>
             );
@@ -180,6 +181,7 @@ function MahaRow({ entry, spanYears, currentMajor, currentMinor, t, tp }: MahaRo
 export function DashaTimeline({ timeline }: Props) {
   const t  = useTranslations('dasha');
   const tp = useTranslations('planetNames');
+  const locale = useLocale();
 
   const { current_dasha, timeline: entries } = timeline;
   const span = totalSpan(entries);
@@ -210,6 +212,7 @@ export function DashaTimeline({ timeline }: Props) {
             currentMinor={current_dasha.minor.planet}
             t={t}
             tp={tp}
+            locale={locale}
           />
         ))}
       </div>
