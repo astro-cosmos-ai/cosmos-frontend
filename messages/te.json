@@ -8,7 +8,14 @@
     "kp": "కేపీ విధానం",
     "ashtakavarga": "అష్టకవర్గం",
     "learn": "నేర్చుకో",
-    "newChart": "కొత్త కుండలి"
+    "newChart": "కొత్త కుండలి",
+    "signIn": "సైన్ ఇన్",
+    "signOut": "సైన్ అవుట్",
+    "theme": "థీమ్",
+    "theme_dusk": "సంధ్య",
+    "theme_dawn": "వేకువ",
+    "theme_mist": "మంచు",
+    "switchLocale": "భాష మార్చండి"
   },
   "form": {
     "title": "జన్మ వివరాలు",
@@ -24,7 +31,46 @@
     "timezone": "సమయ మండలం (UTC తేడా)",
     "submitButton": "కుండలి రూపొందించండి",
     "loadingMessage": "మీ కుండలి రూపొందిస్తున్నాం...",
-    "selectPlace": "సూచనల నుండి స్థలం ఎంచుకోండి"
+    "selectPlace": "సూచనల నుండి స్థలం ఎంచుకోండి",
+    "noResults": "\"{query}\" కు సరిపోలే స్థలాలు కనుగొనబడలేదు. సమీప పెద్ద నగరాన్ని ప్రయత్నించండి.",
+    "searchError": "స్థల శోధన విఫలమైంది. మీ కనెక్షన్ తనిఖీ చేసి మళ్ళీ ప్రయత్నించండి."
+  },
+  "datepicker": {
+    "placeholder": "తేదీ ఎంచుకోండి",
+    "calendarLabel": "తేదీ ఎంపిక క్యాలెండర్",
+    "typePlaceholder": "టైప్ చేయండి: 01-జూన్-1997 లేదా 1997-06-01",
+    "prevLabel": "మునుపటి",
+    "nextLabel": "తదుపరి",
+    "today": "నేడు",
+    "close": "మూసివేయి",
+    "january": "జనవరి",
+    "february": "ఫిబ్రవరి",
+    "march": "మార్చి",
+    "april": "ఏప్రిల్",
+    "may": "మే",
+    "june": "జూన్",
+    "july": "జూలై",
+    "august": "ఆగస్టు",
+    "september": "సెప్టెంబర్",
+    "october": "అక్టోబర్",
+    "november": "నవంబర్",
+    "december": "డిసెంబర్",
+    "sun": "ఆ",
+    "mon": "సో",
+    "tue": "మం",
+    "wed": "బు",
+    "thu": "గు",
+    "fri": "శు",
+    "sat": "శ"
+  },
+  "timepicker": {
+    "placeholder": "సమయం ఎంచుకోండి",
+    "dialogLabel": "సమయ ఎంపిక",
+    "typePlaceholder": "టైప్ చేయండి: 6:30 AM లేదా 18:30",
+    "hour": "గంట",
+    "minute": "నిమిషం",
+    "now": "ఇప్పుడు",
+    "done": "పూర్తయింది"
   },
   "common": {
     "loadingMessage": "లోడ్ అవుతోంది...",

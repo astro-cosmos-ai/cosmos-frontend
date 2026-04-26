@@ -8,7 +8,14 @@
     "kp": "KP System",
     "ashtakavarga": "Ashtakavarga",
     "learn": "Learn",
-    "newChart": "New Chart"
+    "newChart": "New Chart",
+    "signIn": "Sign in",
+    "signOut": "Sign out",
+    "theme": "Theme",
+    "theme_dusk": "Dusk",
+    "theme_dawn": "Dawn",
+    "theme_mist": "Mist",
+    "switchLocale": "Switch language"
   },
   "form": {
     "title": "Birth Details",
@@ -24,7 +31,46 @@
     "timezone": "Timezone (UTC offset)",
     "submitButton": "Generate Chart",
     "loadingMessage": "Generating your chart...",
-    "selectPlace": "Select a place from the suggestions"
+    "selectPlace": "Select a place from the suggestions",
+    "noResults": "No places matched \"{query}\". Try a nearby larger city.",
+    "searchError": "Place lookup failed. Check your connection and try again."
+  },
+  "datepicker": {
+    "placeholder": "Choose a date",
+    "calendarLabel": "Date picker calendar",
+    "typePlaceholder": "Type: 01-Jun-1997 or 1997-06-01",
+    "prevLabel": "Previous",
+    "nextLabel": "Next",
+    "today": "Today",
+    "close": "Close",
+    "january": "January",
+    "february": "February",
+    "march": "March",
+    "april": "April",
+    "may": "May",
+    "june": "June",
+    "july": "July",
+    "august": "August",
+    "september": "September",
+    "october": "October",
+    "november": "November",
+    "december": "December",
+    "sun": "S",
+    "mon": "M",
+    "tue": "T",
+    "wed": "W",
+    "thu": "T",
+    "fri": "F",
+    "sat": "S"
+  },
+  "timepicker": {
+    "placeholder": "Choose a time",
+    "dialogLabel": "Time picker",
+    "typePlaceholder": "Type: 6:30 AM or 18:30",
+    "hour": "Hour",
+    "minute": "Minute",
+    "now": "Now",
+    "done": "Done"
   },
   "common": {
     "loadingMessage": "Loading...",

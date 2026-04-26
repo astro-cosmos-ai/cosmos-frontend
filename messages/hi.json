@@ -8,7 +8,14 @@
     "kp": "केपी प्रणाली",
     "ashtakavarga": "अष्टकवर्ग",
     "learn": "जानें",
-    "newChart": "नई कुंडली"
+    "newChart": "नई कुंडली",
+    "signIn": "साइन इन",
+    "signOut": "साइन आउट",
+    "theme": "थीम",
+    "theme_dusk": "संध्या",
+    "theme_dawn": "भोर",
+    "theme_mist": "कोहरा",
+    "switchLocale": "भाषा बदलें"
   },
   "form": {
     "title": "जन्म विवरण",
@@ -24,7 +31,46 @@
     "timezone": "समय क्षेत्र (UTC अंतर)",
     "submitButton": "कुंडली बनाएं",
     "loadingMessage": "कुंडली बन रही है...",
-    "selectPlace": "सुझावों में से एक स्थान चुनें"
+    "selectPlace": "सुझावों में से एक स्थान चुनें",
+    "noResults": "\"{query}\" से कोई स्थान नहीं मिला। पास के बड़े शहर का प्रयास करें।",
+    "searchError": "स्थान खोज विफल रही। अपना कनेक्शन जांचें और पुनः प्रयास करें।"
+  },
+  "datepicker": {
+    "placeholder": "तारीख चुनें",
+    "calendarLabel": "दिनांक चयनकर्ता कैलेंडर",
+    "typePlaceholder": "टाइप करें: 01-जून-1997 या 1997-06-01",
+    "prevLabel": "पिछला",
+    "nextLabel": "अगला",
+    "today": "आज",
+    "close": "बंद करें",
+    "january": "जनवरी",
+    "february": "फरवरी",
+    "march": "मार्च",
+    "april": "अप्रैल",
+    "may": "मई",
+    "june": "जून",
+    "july": "जुलाई",
+    "august": "अगस्त",
+    "september": "सितंबर",
+    "october": "अक्टूबर",
+    "november": "नवंबर",
+    "december": "दिसंबर",
+    "sun": "र",
+    "mon": "सो",
+    "tue": "मं",
+    "wed": "बु",
+    "thu": "गु",
+    "fri": "शु",
+    "sat": "श"
+  },
+  "timepicker": {
+    "placeholder": "समय चुनें",
+    "dialogLabel": "समय चयनकर्ता",
+    "typePlaceholder": "टाइप करें: 6:30 AM या 18:30",
+    "hour": "घंटा",
+    "minute": "मिनट",
+    "now": "अभी",
+    "done": "हो गया"
   },
   "common": {
     "loadingMessage": "लोड हो रहा है...",
