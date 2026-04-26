@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, use } from 'react';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { createClient } from '@/lib/supabase/browser';
@@ -12,6 +12,7 @@ type Props = {
 export default function SignInPage({ params }: Props) {
   const t = useTranslations('auth');
   const router = useRouter();
+  const { locale } = use(params);
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -35,21 +36,18 @@ export default function SignInPage({ params }: Props) {
       return;
     }
 
-    // Resolve locale for the redirect path.
-    const { locale } = await params;
     router.push(`/${locale}/chart`);
     router.refresh();
   }
 
   async function handleOAuth() {
     const supabase = createClient();
-    const { locale } = await params;
     const origin =
       typeof window !== 'undefined' ? window.location.origin : '';
     await supabase.auth.signInWithOAuth({
       provider: 'google',
       options: {
-        redirectTo: `${origin}/${locale}/auth/callback`,
+        redirectTo: `${origin}/${locale}/callback`,
       },
     });
   }

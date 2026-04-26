@@ -31,7 +31,10 @@ export default function SignUpPage() {
       options: {
         emailRedirectTo:
           typeof window !== 'undefined'
-            ? `${window.location.origin}/auth/callback`
+            ? (() => {
+                const locale = window.location.pathname.split('/')[1];
+                return `${window.location.origin}/${locale}/callback`;
+              })()
             : undefined,
       },
     });
