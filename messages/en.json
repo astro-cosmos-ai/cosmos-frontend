@@ -188,5 +188,29 @@
       "Mongoose": "Mongoose",
       "Lion": "Lion"
     }
+  },
+  "auth": {
+    "eyebrow": "Cosmos",
+    "signInTitle": "Welcome back",
+    "signUpTitle": "Create account",
+    "email": "Email",
+    "emailPlaceholder": "you@example.com",
+    "password": "Password",
+    "passwordPlaceholder": "Your password",
+    "confirmPassword": "Confirm password",
+    "confirmPasswordPlaceholder": "Repeat your password",
+    "signInButton": "Sign in",
+    "signingIn": "Signing in…",
+    "signUpButton": "Create account",
+    "signingUp": "Creating account…",
+    "orContinueWith": "or continue with",
+    "googleButton": "Continue with Google",
+    "noAccount": "No account?",
+    "signUpLink": "Sign up",
+    "haveAccount": "Already have an account?",
+    "signInLink": "Sign in",
+    "passwordMismatch": "Passwords do not match.",
+    "checkEmailTitle": "Check your email",
+    "checkEmailBody": "We sent a confirmation link to {email}. Open it to activate your account."
   }
 }

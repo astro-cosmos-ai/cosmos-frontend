@@ -188,5 +188,29 @@
       "Mongoose": "नकुल",
       "Lion": "सिंह"
     }
+  },
+  "auth": {
+    "eyebrow": "Cosmos",
+    "signInTitle": "वापसी पर स्वागत है",
+    "signUpTitle": "खाता बनाएं",
+    "email": "ईमेल",
+    "emailPlaceholder": "आप@उदाहरण.com",
+    "password": "पासवर्ड",
+    "passwordPlaceholder": "आपका पासवर्ड",
+    "confirmPassword": "पासवर्ड की पुष्टि करें",
+    "confirmPasswordPlaceholder": "पासवर्ड दोबारा दर्ज करें",
+    "signInButton": "साइन इन करें",
+    "signingIn": "साइन इन हो रहा है…",
+    "signUpButton": "खाता बनाएं",
+    "signingUp": "खाता बनाया जा रहा है…",
+    "orContinueWith": "या इसके साथ जारी रखें",
+    "googleButton": "Google से जारी रखें",
+    "noAccount": "खाता नहीं है?",
+    "signUpLink": "साइन अप करें",
+    "haveAccount": "पहले से खाता है?",
+    "signInLink": "साइन इन करें",
+    "passwordMismatch": "पासवर्ड मेल नहीं खाते।",
+    "checkEmailTitle": "अपना ईमेल जांचें",
+    "checkEmailBody": "हमने {email} पर एक पुष्टिकरण लिंक भेजा है। अपना खाता सक्रिय करने के लिए उसे खोलें।"
   }
 }

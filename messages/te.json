@@ -188,5 +188,29 @@
       "Mongoose": "ముంగిస",
       "Lion": "సింహం"
     }
+  },
+  "auth": {
+    "eyebrow": "Cosmos",
+    "signInTitle": "తిరిగి స్వాగతం",
+    "signUpTitle": "ఖాతా సృష్టించండి",
+    "email": "ఇమెయిల్",
+    "emailPlaceholder": "మీరు@ఉదాహరణ.com",
+    "password": "పాస్‌వర్డ్",
+    "passwordPlaceholder": "మీ పాస్‌వర్డ్",
+    "confirmPassword": "పాస్‌వర్డ్ నిర్ధారించండి",
+    "confirmPasswordPlaceholder": "పాస్‌వర్డ్ మళ్ళీ నమోదు చేయండి",
+    "signInButton": "సైన్ ఇన్ చేయండి",
+    "signingIn": "సైన్ ఇన్ అవుతోంది…",
+    "signUpButton": "ఖాతా సృష్టించండి",
+    "signingUp": "ఖాతా సృష్టిస్తోంది…",
+    "orContinueWith": "లేదా దీనితో కొనసాగండి",
+    "googleButton": "Google తో కొనసాగండి",
+    "noAccount": "ఖాతా లేదా?",
+    "signUpLink": "సైన్ అప్ చేయండి",
+    "haveAccount": "ఇప్పటికే ఖాతా ఉందా?",
+    "signInLink": "సైన్ ఇన్ చేయండి",
+    "passwordMismatch": "పాస్‌వర్డ్‌లు సరిపోలలేదు.",
+    "checkEmailTitle": "మీ ఇమెయిల్ తనిఖీ చేయండి",
+    "checkEmailBody": "{email} కు ధృవీకరణ లింక్ పంపబడింది. మీ ఖాతాను సక్రియం చేయడానికి దాన్ని తెరవండి."
   }
 }
