@@ -4,6 +4,8 @@ import sampleAnalysis from '../fixtures/sample-analysis.json';
 
 const BASE = 'http://localhost:8000';
 
+export const BACKEND_URL = BASE;
+
 export const handlers = [
   // GET /api/charts/:id
   http.get(`${BASE}/api/charts/:id`, () => {
@@ -69,4 +71,11 @@ export const handlers = [
       transit_date: '2024-01-15',
     });
   }),
+
+  // GET /api/charts/:id/report.pdf
+  http.get(`${BASE}/api/charts/:id/report.pdf`, () =>
+    new HttpResponse(new Uint8Array([1, 2, 3, 4]), {
+      headers: { 'Content-Type': 'application/pdf' },
+    }),
+  ),
 ];
